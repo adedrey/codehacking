@@ -41,9 +41,9 @@
             
         </div>
         <div class="form-group">
-        {!! Form::label('upload','Upload: ', ['class'=>'control-label col-sm-2']) !!}
+        {!! Form::label('photo','Upload: ', ['class'=>'control-label col-sm-2']) !!}
             <div class="col sm-6">
-                {!! Form::file('file', null, ['class'=>'form-control']) !!}
+                {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
             </div>
             <div class="col-sm-offset-4"></div>
         </div>
