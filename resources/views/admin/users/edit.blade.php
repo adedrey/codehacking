@@ -61,8 +61,8 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-            {!! Form::submit('Create User',['class'=>'btn btn-default']) !!}
+            <div class="">
+            {!! Form::submit('Update User',['class'=>'btn btn-primary col-sm-offset-2 col-sm-6']) !!}
             </div>
             
         </div>
@@ -70,6 +70,17 @@
         
     {!! Form::close() !!}
 
+    {!! Form::model($user,['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+        <div class="form-group ">
+            <div class="">
+            {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-offset-2 col-sm-6']) !!}
+            </div>
+        </div>
+    {!! Form::close() !!}
+
+   
+
     @include('includes.form_errors')
+
 </div>
 @endsection

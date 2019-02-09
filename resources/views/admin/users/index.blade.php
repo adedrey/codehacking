@@ -1,6 +1,13 @@
 @extends('layouts/admin')
 @section('content')
 <h1>Users</h1>
+@if(Session::has('deleted_user'))
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> {{Session('deleted_user')}}
+  </div>
+@endif
+
     <table class="table table-hover">
     <thead>
       <tr>
@@ -12,6 +19,7 @@
         <th>Status</th>
         <th>Created</th>
         <th>Updated</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +34,11 @@
           <td>{{$user->status == 1 ? 'Active' : 'Not Active'}}</td>
           <td>{{$user->created_at->diffForHumans()}}</td>
           <td>{{$user->updated_at->diffForHumans()}}</td>
+          <td>-
+          {!! Form::model($user,['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+                  {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-xs']) !!}
+          {!! Form::close() !!}
+          </td>
         </tr>
         
 
